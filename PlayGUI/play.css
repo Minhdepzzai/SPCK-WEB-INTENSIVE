@@ -140,7 +140,8 @@ a{
 .nav-box{
     display: flex;
     justify-content: center;
-    padding-left: 10px;
+    /* padding-left: 10px; */
+    margin-left: 10px;
 
 }
 .nav-item{
