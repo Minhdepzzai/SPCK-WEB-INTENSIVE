@@ -80,9 +80,10 @@ body {
 }
 #addQues{
     width: 100%;
-    background-color: black;
-    color: white;
+    /* background-color: black;
+    color: white; */
     /* margin-left: 20px; */
+    margin-top: 10px;
 }
 .create-box{
     display:flex ;
@@ -109,15 +110,19 @@ body {
 
 .create-left-title{
     display: flex;
-    justify-content: center;
-    
+    /* justify-content: center; */
     padding-top: 30px;
     padding-left: 20px;
 }
-.create-left-title input{
-    width: 272px;
+.tilte-less{
+    width: 410px;
 }
-
+.save-btn{
+    background-color: black;
+}
+.input-lesson{
+    padding-left: 2px;
+}
 /* .dropdown-size{
     width: 250px;
 } */
@@ -132,6 +137,7 @@ body {
     padding-top: 10px;
     
     padding-right: 20px;
+    /* padding-left: 20px; */
     padding-bottom: 10px;
     display: flex;
     justify-content: space-between;
@@ -146,7 +152,12 @@ body {
     /* justify-content: space-between; */
 
 }
-
+.create-left-ques-left{
+    display: flex;
+}
+.create-left-ques-left i{
+    padding-right: 10px;
+}
 .box-ans{
     background-color: blue;
     margin-bottom: 20px;
@@ -192,4 +203,17 @@ textarea{
 .checkbox.active i{
     color: white;
 }
-
+.dropdownbox{
+    display: block;
+}
+#dropdownMenuButton{
+    width: 180px;
+}
+.dropdown-item:hover{
+    background-color: #e0e0e0 !important;
+    color: black;
+}
+.dropdown-item-active{
+    background-color: #007bff !important;
+    color: white;
+}
