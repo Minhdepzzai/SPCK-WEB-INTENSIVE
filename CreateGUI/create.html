@@ -55,11 +55,11 @@
     </div>
     <div class="create-left-title">
         <input type="text" placeholder="Name of lesson" />
-        <button>Save</button>
+        <button id="saveBtn">Save</button>
     </div>
     <div class="container-fluid">
         <div class="create-box row">
-            <div class="create-left col-2 w-100">
+            <div class="create-left col-lg-2 col-sm-12 lw-100">
                 <div class="create-left-search">
                     <input type="text" placeholder="search">
                 </div>
@@ -73,9 +73,9 @@
                     <button id="addQues">Add a question</button>
                 </div>
             </div>
-            <div class="create-middle col-8">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Question" aria-label="Example text with button addon"
+            <div class="create-middle col-lg-8 col-sm-12">
+                <div class="input-group mb-3" >
+                    <input type="text" class="form-control" id="quesName" placeholder="Question" aria-label="Example text with button addon"
                         aria-describedby="button-addon1" />
                 </div>
                 <div class="create-middle-img">
@@ -114,7 +114,7 @@
 
 
             </div>
-            <div class="create-right col-2">
+            <div class="create-right col-lg-2 col-sm-12">
                 <div class="create-right-first">
                     <h3>Question type</h3>
                     <div class="dropdown">
@@ -167,6 +167,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
+    <script type="module" src="./firebase.js"></script>
+    <script type = "module" src = "create.js"></script>
 </body>
 
 </html>

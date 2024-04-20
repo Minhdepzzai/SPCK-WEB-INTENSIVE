@@ -166,6 +166,7 @@ a{
     box-sizing: border-box;
     border-radius: 8px;
     border: 2px solid;
+    text-align: center;
 }
 .pin-box{
     display: flex;
