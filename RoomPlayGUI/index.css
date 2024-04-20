@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: sans-serif;
+    background-color: #8906E6;
+}
+.nav-icon{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+}
+.nav-icon-left{
+    display: flex;
+     /* padding-left: 20px; */
+     padding-right: 20px;
+    /* padding-top: 20px;  */
+}
+i:hover{
+    background-color: #230f47;
+}
+.icon-home i, .icon-fullscreen i{
+    padding: 5px;
+}
+.nav-icon-mid{
+    color: white;
+}
+.nav-icon-right{
+    display: flex;
+}
