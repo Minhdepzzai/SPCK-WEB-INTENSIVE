@@ -101,13 +101,13 @@
                     <div class="create-middle-box-ans-left col-6">
                         <div class="box-ans" id="red">
                             <textarea name="" id="" maxlength="95"   ></textarea>
-                            <div class="checkbox active">
+                            <div class="checkbox active" id="as1">
                                 <i class="fa-solid fa-check"></i>
                             </div>
                         </div>
                         <div class="box-ans" id="yellow">
                             <textarea name="" id="" maxlength="95"   ></textarea>
-                            <div class="checkbox">
+                            <div class="checkbox" id="as3">
                                 <i class="fa-solid fa-check"></i>
                             </div>
                         </div>
@@ -115,13 +115,13 @@
                     <div class="create-middle-box-ans-right col-6">
                         <div class="box-ans" id="blue">
                             <textarea name="" id="" maxlength="95"   ></textarea>
-                            <div class="checkbox">
+                            <div class="checkbox" id="as2">
                                 <i class="fa-solid fa-check"></i>
                             </div>
                         </div>
                         <div class="box-ans" id="green">
                             <textarea name="" id="" maxlength="95"   ></textarea>
-                            <div class="checkbox">
+                            <div class="checkbox" id="as4">
                                 <i class="fa-solid fa-check"></i>
                             </div>
                         </div>
@@ -136,12 +136,12 @@
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle box-quesType" type="button" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            True or False
+                            Quiz
                         </button>
                         
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <div class="dropdownbox">
-                                <a class="dropdown-item" href="#" id="btn-quiz">Quiz</a>
+                            <div class="dropdownbox" id="dropdownbox-quesT">
+                                <a class="dropdown-item " href="#" id="btn-quiz">Quiz</a>
                                 <a class="dropdown-item" href="#" id="btn-tof">True or False</a>
                             </div>
                         </div>
@@ -150,23 +150,18 @@
                 <div class="create-right-second">
                     <h3>Time</h3>
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        <button class="btn btn-secondary dropdown-toggle time" type="button" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Question 1
+                            5 seconds
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <div class="dropdownbox">
-                                <a class="dropdown-item" href="#">5 seconds</a>
+                            <div class="dropdownbox" id="dropdownbox-time">
+                                <a class="dropdown-item" href="#" id="timeFirst">5 seconds</a>
                                 <a class="dropdown-item" href="#">10 seconds</a>
                                 <a class="dropdown-item" href="#">15 secondcs</a>
                                 <a class="dropdown-item" href="#">20 seconds</a>
                                 <a class="dropdown-item" href="#">25 seconds</a>
                                 <a class="dropdown-item" href="#">30 seconds</a>
-                                <a class="dropdown-item"><div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Question" aria-label="Example text with button addon"
-                                        aria-describedby="button-addon1" />
-                                </div></a>
-                                
                             </div>
                         </div>
                     </div>
@@ -174,19 +169,14 @@
                 <div class="create-right-third">
                     <h3>Points</h3>
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Question 1
+                        <button class="btn btn-secondary dropdown-toggle point" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                            Standard
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdown-point">
                             <div class="dropdownbox">
-                                <a class="dropdown-item" href="#">Standard</a>
+                                <a class="dropdown-item" href="#" id="pointFi">Standard</a>
                                 <a class="dropdown-item" href="#">Double counting</a>
-                                <a class="dropdown-item"><div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Question" aria-label="Example text with button addon"
-                                        aria-describedby="button-addon1" />
-                                </div></a>
-                                
                             </div>
                         </div>
                     </div>

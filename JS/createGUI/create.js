@@ -12,6 +12,8 @@ onSnapshot(collectionRef, (data) =>{
         // console.log(doc.data().id)
     });
 })
+
+
 let pinPriv = '111111';
 saveBtn.onclick = () => {
     addDoc(collectionRef,{
@@ -45,4 +47,7 @@ saveBtn.onclick = () => {
     })
     // console.log(String(nameQues.value))
 }
+
+
+// Get the div elements
 
