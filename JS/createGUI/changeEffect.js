@@ -66,16 +66,26 @@ pointItems.forEach((item) => {
 
 let checkboxBtn = document.querySelectorAll(".create-middle-box-ans .checkbox");
 let ans = null;
-let prevItemCheckBox = checkboxBtn[0]; // Initialize prevItemCheckBox to the first item
+let prevItemCheckBox = checkboxBtn[0]; 
 
-// Attach click event listeners to each checkbox
 checkboxBtn.forEach((item, index) => {
     item.onclick = () => {
-        prevItemCheckBox.classList.remove("active"); // Remove active class from previous item
-        item.classList.add("active"); // Add active class to the clicked item
+        prevItemCheckBox.classList.remove("active"); 
+        item.classList.add("active"); 
         ans = index + 1;
-        console.log(ans); // Log the selected answer
-        prevItemCheckBox = item; // Update prevItemCheckBox to the clicked item
+        console.log(ans);
+        prevItemCheckBox = item; 
     };
 });
 
+let tickIcon = document.getElementById("tickIcon");
+
+tickIcon.addEventListener("mouseover", function() {
+    tickIcon.classList.remove("fa-square");
+    tickIcon.classList.add("fa-check-square");
+});
+
+tickIcon.addEventListener("mouseout", function() {
+    tickIcon.classList.remove("fa-check-square");
+    tickIcon.classList.add("fa-square");
+});

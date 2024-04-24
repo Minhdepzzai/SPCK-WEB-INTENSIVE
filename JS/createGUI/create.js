@@ -49,5 +49,4 @@ saveBtn.onclick = () => {
 }
 
 
-// Get the div elements
 

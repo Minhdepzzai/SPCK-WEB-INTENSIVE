@@ -2,7 +2,7 @@
 const addQues = () =>{
     const btnAddQues = document.getElementById("addQues")
     let cntQues = 1
-    const leftCol = document.getElementsByClassName("create-left-ques-item")[0]; 
+    const leftCol = document.getElementsByClassName("scroll-bar")[0]; 
     btnAddQues.onclick = () => {
         leftCol.insertAdjacentHTML('beforeend', `<div class="create-left-ques">
         <div class="create-left-ques-left">

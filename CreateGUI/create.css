@@ -222,5 +222,7 @@ textarea{
     background-color: #007bff ;
     color: white;
 }
-
-
+.scroll-bar{
+    max-height: 550px; /* Giới hạn chiều cao */
+    overflow-y: auto; /* Hiển thị thanh cuộn chỉ khi cần thiết */
+}
