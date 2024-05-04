@@ -1,9 +1,6 @@
 
 import {
   getFirestore,
-  collection,
-  onSnapshot,
-  query,
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
@@ -21,7 +18,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
-export const auth = getAuth(app); 
+export const auth = getAuth(app);
 
 
 

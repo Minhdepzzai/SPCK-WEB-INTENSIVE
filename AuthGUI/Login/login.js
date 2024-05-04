@@ -1,26 +1,24 @@
-var email = document.getElementById("email");
-var password = document.getElementById("password");
-var listUsers = JSON.parse(localStorage.getItem("user")) || [];
+import { auth } from "../../JS/firebase.js";
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 
-document.getElementById("btnSubmit").addEventListener("click", function (e) {
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const submitBtn = document.getElementById("btnSubmit")
+
+submitBtn.onclick = async (e) => {
   e.preventDefault();
-  if (email.value.trim().length == 0 || password.value.trim().length == 0) {
+  if (emailInput.value.trim().length == 0 || passwordInput.value.trim().length == 0) {
     alert("Can not empty!");
   } else {
-    let checkUser = false;
-    for (i in listUsers) {
-      if (
-        listUsers[i].email == email.value.trim() &&
-        listUsers[i].password == password.value.trim()
-      ) {
-        checkUser = true;
-        break;
-      }
-    }
-    if (checkUser == true) {
-      window.location.pathname = "/index.html";
-    } else {
-      alert("Email or password is wrong.");
+    try {
+      await signInWithEmailAndPassword(
+        auth,
+        emailInput.value,
+        passwordInput.value);
+      // console.log(firebase.auth().currentUser);
+      alert("Login successful");
+    } catch (err) {
+      alert(err.message);
     }
   }
-});
+};
