@@ -78,14 +78,36 @@ checkboxBtn.forEach((item, index) => {
     };
 });
 
-let tickIcon = document.getElementById("tickIcon");
+// let tickIcon = document.getElementById("tickIconAll");
+// let cntTick = 0;
 
-tickIcon.addEventListener("mouseover", function() {
-    tickIcon.classList.remove("fa-square");
-    tickIcon.classList.add("fa-check-square");
-});
+// if (tickIcon) {
+    
+//     tickIcon.addEventListener("mouseover", function() {
+//         tickIcon.classList.remove("fa-square");
+//         tickIcon.classList.add("fa-check-square");
+//     });
 
-tickIcon.addEventListener("mouseout", function() {
-    tickIcon.classList.remove("fa-check-square");
-    tickIcon.classList.add("fa-square");
-});
+//     tickIcon.addEventListener("mouseleave", function() {
+//         if (cntTick !== 1) {
+//             tickIcon.classList.remove("fa-check-square");
+//             tickIcon.classList.add("fa-square");
+//         }
+//     });
+
+//     tickIcon.addEventListener("click", function() {
+//         cntTick++;
+//         if (cntTick === 2) {
+//             tickIcon.classList.remove("fa-check-square");
+//             tickIcon.classList.add("fa-square");
+//             cntTick = 1;
+//         } else {
+//             tickIcon.classList.remove("fa-square");
+//             tickIcon.classList.add("fa-check-square");
+//         }
+//     });
+// }
+
+
+
+

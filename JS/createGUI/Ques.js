@@ -6,7 +6,7 @@ const addQues = () =>{
     btnAddQues.onclick = () => {
         leftCol.insertAdjacentHTML('beforeend', `<div class="create-left-ques">
         <div class="create-left-ques-left">
-        <i class="fas fa-check-square"></i>
+        <i class="fas fa-square "></i>
         <h6 >Question ${cntQues}</h6>
         </div>
         <div class="create-left-ques-right">

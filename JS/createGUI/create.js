@@ -1,5 +1,6 @@
 import {db} from "../firebase.js"
 import {collection, getDocs, addDoc, deleteDoc, doc, onSnapshot,} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+let titleLesson = document.getElementById("title-lesson")
 let nameQues = document.getElementById("quesName")
 let saveBtn = document.querySelector("#saveBtn")
 const collectionRef = collection(db, "questions")
@@ -13,33 +14,38 @@ onSnapshot(collectionRef, (data) =>{
     });
 })
 
+let ansRed = document.getElementById("ans1")
+let ansGreen = document.getElementById("ans4")
+let ansBlue = document.getElementById("ans2")
+let ansYellow = document.getElementById("ans3")
+
 
 let pinPriv = '111111';
 saveBtn.onclick = () => {
     addDoc(collectionRef,{
         pin:  pinPriv,
-        title:String(nameQues.value),
+        title:String(titleLesson.value),
         ques: [
             {
                 answers: [
                     {
-                        answer: "Minh1",
+                        answer: String(ansRed),
                         isCorrect: true
                     },
                     {
-                        answer: "Minh2",
+                        answer: String(ansBlue),
                         isCorrect: true
                     },
                     {
-                        answer:"Minh3",
+                        answer:String(ansYellow),
                         isCorrect:true
                     },
                     {
-                        answer:"Minh4",
+                        answer:String(ansGreen),
                         isCorrect:true
                     }
                 ],
-                name:"cau hoi la gi",
+                name:String(nameQues.value),
                 points:100,
                 time:15
           }
