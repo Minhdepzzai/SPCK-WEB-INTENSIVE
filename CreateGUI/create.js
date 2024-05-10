@@ -12,37 +12,44 @@ onSnapshot(collectionRef, (data) =>{
         console.log(doc.data().id)
     });
 })
-let pinPriv = '111111';
-saveBtn.onclick = () => {
-    addDoc(collectionRef,{
-        pin:  pinPriv,
-        title:String(nameQues.value),
-        ques: [
-            {
-                answers: [
-                    {
-                        answer: "Minh1",
-                        isCorrect: true
-                    },
-                    {
-                        answer: "Minh2",
-                        isCorrect: true
-                    },
-                    {
-                        answer:"Minh3",
-                        isCorrect:true
-                    },
-                    {
-                        answer:"Minh4",
-                        isCorrect:true
-                    }
-                ],
-                name:"cau hoi la gi",
-                points:100,
-                time:15
-          }
-        ]
-    })
-    // console.log(String(nameQues.value))
-}
+// let ans1 = document.getElementById("ans1")
+// let ans2 = document.getElementById("ans2")
+// let ans3 = document.getElementById("ans3")
+// let ans4 = document.getElementById("ans4")
+
+// let pinPriv = '111111';
+// saveBtn.onclick = () => {
+//     console.log(ans1.value)
+//     console.log(nameQues.value)
+//     addDoc(collectionRef,{
+//         pin:  pinPriv,
+//         title:String(nameQues.value),
+//         ques: [
+//             {
+//                 answers: [
+//                     {
+//                         answer: String(ans1.value),
+//                         isCorrect: true
+//                     },
+//                     {
+//                         answer: String(ans2.value),
+//                         isCorrect: true
+//                     },
+//                     {
+//                         answer:String(ans3.value),
+//                         isCorrect:true
+//                     },
+//                     {
+//                         answer:String(ans4.value),
+//                         isCorrect:true
+//                     }
+//                 ],
+//                 name:"cau hoi la gi",
+//                 points:100,
+//                 time:15
+//           }
+//         ]
+//     })
+//     // console.log(String(nameQues.value))
+// }
 

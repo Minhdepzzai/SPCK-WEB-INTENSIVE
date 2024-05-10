@@ -14,6 +14,22 @@ onSnapshot(collectionRef, (data) =>{
     });
 })
 
+
+let checkboxBtn = document.querySelectorAll(".create-middle-box-ans .checkbox");
+let ans = 1;
+let prevItemCheckBox = checkboxBtn[0]; 
+
+checkboxBtn.forEach((item, index) => {
+    item.onclick = () => {
+        prevItemCheckBox.classList.remove("active"); 
+        item.classList.add("active"); 
+        ans = index + 1;
+        // console.log(ans);
+        prevItemCheckBox = item; 
+    };
+});
+
+
 let ansRed = document.getElementById("ans1")
 let ansGreen = document.getElementById("ans4")
 let ansBlue = document.getElementById("ans2")
@@ -22,6 +38,7 @@ let ansYellow = document.getElementById("ans3")
 
 let pinPriv = '111111';
 saveBtn.onclick = () => {
+    console.log(ans)
     addDoc(collectionRef,{
         pin:  pinPriv,
         title:String(titleLesson.value),
@@ -29,20 +46,20 @@ saveBtn.onclick = () => {
             {
                 answers: [
                     {
-                        answer: String(ansRed),
-                        isCorrect: true
+                        answer: String(ansRed.value),
+                        isCorrect: ans === 1
                     },
                     {
-                        answer: String(ansBlue),
-                        isCorrect: true
+                        answer: String(ansBlue.value),
+                        isCorrect: ans === 3
                     },
                     {
-                        answer:String(ansYellow),
-                        isCorrect:true
+                        answer:String(ansYellow.value),
+                        isCorrect:ans === 2
                     },
                     {
-                        answer:String(ansGreen),
-                        isCorrect:true
+                        answer:String(ansGreen.value),
+                        isCorrect:ans === 4
                     }
                 ],
                 name:String(nameQues.value),
@@ -51,8 +68,10 @@ saveBtn.onclick = () => {
           }
         ]
     })
-    // console.log(String(nameQues.value))
+    console.log(String(nameQues.value))
 }
+
+
 
 
 

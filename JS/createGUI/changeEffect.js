@@ -2,6 +2,7 @@ let quesT = document.querySelectorAll("#dropdownbox-quesT .dropdown-item");
 let boxquesT = document.getElementsByClassName("box-quesType");
 let prevItemQuesT = null; 
 let btnQuiz = document.getElementById("btn-quiz")
+let cntQuesTick = 0
 btnQuiz.classList.add("dropdown-item-active")
 prevItemQuesT = btnQuiz
 quesT.forEach((item) => {
@@ -64,50 +65,110 @@ pointItems.forEach((item) => {
 });
 
 
-let checkboxBtn = document.querySelectorAll(".create-middle-box-ans .checkbox");
-let ans = null;
-let prevItemCheckBox = checkboxBtn[0]; 
+let quesTick = document.querySelectorAll(".quesTick");
 
-checkboxBtn.forEach((item, index) => {
-    item.onclick = () => {
-        prevItemCheckBox.classList.remove("active"); 
-        item.classList.add("active"); 
-        ans = index + 1;
-        console.log(ans);
-        prevItemCheckBox = item; 
-    };
-});
+let tickIcon = document.getElementById("tickIconAll");
+let cntTick = 0;
 
-// let tickIcon = document.getElementById("tickIconAll");
-// let cntTick = 0;
 
-// if (tickIcon) {
+function checkQuesTick(quesTick, cntTick) {
+    if (!cntTick) {
+        quesTick.forEach((item) => {
+            item.classList.remove("fa-check-square");
+            item.classList.add("fa-square");
+            cntQuesTick = 0
+        });
+    } else {
+        quesTick.forEach((item) => {
+            item.classList.remove("fa-square");
+            item.classList.add("fa-check-square");
+            cntQuesTick = 1;
+        });
+    }
+}
+
+if (tickIcon) {
+    tickIcon.addEventListener("mouseover", function() {
+        tickIcon.classList.remove("fa-square");
+        tickIcon.classList.add("fa-check-square");
+    });
+
+    tickIcon.addEventListener("mouseleave", function() {
+        if (!cntTick) {
+            tickIcon.classList.remove("fa-check-square");
+            tickIcon.classList.add("fa-square");
+        }
+        else{
+            tickIcon.classList.remove("fa-square");
+            tickIcon.classList.add("fa-check-square");    
+        }
+    });
+    tickIcon.addEventListener("click", function() {
+        
+        if(cntTick){
+            quesTick = document.querySelectorAll(".quesTick");
+            tickIcon.classList.remove("fa-check-square");
+            tickIcon.classList.add("fa-square");
+            cntTick = false;   
+            checkQuesTick(quesTick,cntTick) 
+            cntQuesTick = 0;
+        }
+        else{
+            tickIcon.classList.remove("fa-square");
+            tickIcon.classList.add("fa-check-square");   
+            cntTick = true;    
+            checkQuesTick(quesTick,cntTick) 
+            cntQuesTick = 1;
+        }
+    });
+}
+
+
+
+const addQues = () =>{
+    const btnAddQues = document.getElementById("addQues")
+    let cntQues = 1
+    const leftCol = document.getElementsByClassName("scroll-bar")[0]; 
+    btnAddQues.onclick = () => {
+        leftCol.insertAdjacentHTML('beforeend', `<div class="create-left-ques">
+        <div class="create-left-ques-left">
+        <i class="fas fa-square quesTick"></i>
+        <h6 >Question ${cntQues}</h6>
+        </div>
+        <div class="create-left-ques-right">
+        <i class="fa-solid fa-x"></i>
+        </div>
+        </div>`);
+        cntQues++;
+        quesTick = document.querySelectorAll(".quesTick");
+        tickIcon.classList.remove("fa-check-square");
+            tickIcon.classList.add("fa-square");
+            cntTick = false;   
+        checkQuesTick(quesTick,0) 
+        console.log(quesTick)
+
+        quesTick.forEach((item,index) => {
+            item.onclick = () =>{
+                if(item.classList.contains("fa-check-square")){
+                    item.classList.remove("fa-check-square")
+                    item.classList.add("fa-square");
+                }  
+                else{
+                    item.classList.remove("fa-square");
+                    item.classList.add("fa-check-square")
+                }
+            }
+        })
+    }
+
+    const createLeftQuesItems = document.querySelectorAll('.create-left-ques-item');
+
+    createLeftQuesItems.forEach((item, index) => {
+        item.addEventListener('click', function() {
+            // console.log(index);
+        });
+    });
     
-//     tickIcon.addEventListener("mouseover", function() {
-//         tickIcon.classList.remove("fa-square");
-//         tickIcon.classList.add("fa-check-square");
-//     });
-
-//     tickIcon.addEventListener("mouseleave", function() {
-//         if (cntTick !== 1) {
-//             tickIcon.classList.remove("fa-check-square");
-//             tickIcon.classList.add("fa-square");
-//         }
-//     });
-
-//     tickIcon.addEventListener("click", function() {
-//         cntTick++;
-//         if (cntTick === 2) {
-//             tickIcon.classList.remove("fa-check-square");
-//             tickIcon.classList.add("fa-square");
-//             cntTick = 1;
-//         } else {
-//             tickIcon.classList.remove("fa-square");
-//             tickIcon.classList.add("fa-check-square");
-//         }
-//     });
-// }
-
-
-
+}
+addQues()
 
