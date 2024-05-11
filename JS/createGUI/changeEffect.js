@@ -1,76 +1,98 @@
-let quesT = document.querySelectorAll("#dropdownbox-quesT .dropdown-item");
-let boxquesT = document.getElementsByClassName("box-quesType");
-let prevItemQuesT = null; 
-let btnQuiz = document.getElementById("btn-quiz")
-let cntQuesTick = 0
-btnQuiz.classList.add("dropdown-item-active")
-prevItemQuesT = btnQuiz
-quesT.forEach((item) => {
-    item.onclick = () => {
-        boxquesT[0].textContent = item.textContent;
+
+// const changeQuesType = () =>{
+//     let quesT = document.querySelectorAll("#dropdownbox-quesT .dropdown-item");
+//     let boxquesT = document.getElementsByClassName("box-quesType");
+//     let prevItemQuesT = null; 
+//     let btnQuiz = document.getElementById("btn-quiz")
+//     btnQuiz.classList.add("dropdown-item-active")
+//     prevItemQuesT = btnQuiz
+//     quesT.forEach((item) => {
+//         item.onclick = () => {
+//             boxquesT[0].textContent = item.textContent;
+//             item.classList.add("dropdown-item-active");
+//             if (prevItemQuesT  != item) {
+//                 prevItemQuesT.classList.remove("dropdown-item-active");
+//             }
+//             prevItemQuesT = item;
+//             console.log(prevItemQuesT);
+//         };
+//     });    
+// }
+
+const changeQuesType = () => {
+    let quesT = document.querySelectorAll("#dropdownbox-quesT .dropdown-item");
+    let boxquesT = document.querySelector(".box-quesType"); 
+    let prevItemQuesT = null;
+    let btnQuiz = document.getElementById("btn-quiz")
+    btnQuiz.classList.add("dropdown-item-active")
+    const handleItemClick = (item) => {
+        boxquesT.textContent = item.textContent;
         item.classList.add("dropdown-item-active");
-        if (prevItemQuesT  != item) {
+        if (prevItemQuesT && prevItemQuesT !== item) {
             prevItemQuesT.classList.remove("dropdown-item-active");
         }
         prevItemQuesT = item;
-        console.log(prevItemQuesT);
+        console.log(prevItemQuesT.textContent);
     };
-});
+    quesT.forEach((item) => {
+        item.addEventListener("click", () => {
+            handleItemClick(item);
+        });
+    });
+};
+const changeTime = () => {
+    let timeItems = document.querySelectorAll("#dropdownbox-time .dropdown-item");
+    let boxtime = document.getElementsByClassName("time");
+    let prevItemTime = null;
+    let timeFi = document.getElementById("timeFirst");
 
-let timeItems = document.querySelectorAll("#dropdownbox-time .dropdown-item");
-let boxtime = document.getElementsByClassName("time");
-let prevItemTime = null;
-let timeFi = document.getElementById("timeFirst");
+    timeFi.classList.add("dropdown-item-active");
+    prevItemTime = timeFi;
 
-timeFi.classList.add("dropdown-item-active");
-prevItemTime = timeFi;
-
-timeItems.forEach((item) => {
-    
-    item.onclick = (e) => {
-            prevItemTime.classList.remove("dropdown-item-active")
-            boxtime[0].textContent = item.textContent;
-            item.classList.add("dropdown-item-active");
-            if (prevItemTime && prevItemTime !== item) {
-                prevItemTime.classList.remove("dropdown-item-active");
-            }
-            prevItemTime = item;
-            console.log(prevItemTime);
+    timeItems.forEach((item) => {
         
-    };
-});
+        item.onclick = (e) => {
+                prevItemTime.classList.remove("dropdown-item-active")
+                boxtime[0].textContent = item.textContent;
+                item.classList.add("dropdown-item-active");
+                if (prevItemTime && prevItemTime !== item) {
+                    prevItemTime.classList.remove("dropdown-item-active");
+                }
+                prevItemTime = item;
+                console.log(prevItemTime);
+            
+        };
+    });
+}
+
+const changePoint = () =>{
+    let pointItems = document.querySelectorAll("#dropdown-point .dropdown-item");
+    let boxpoint = document.getElementsByClassName("point");
+    let prevItemPoint = null;
+    let pointFi = document.getElementById("pointFi");
+    pointFi.classList.add("dropdown-item-active");
+    prevItemPoint = pointFi;
+
+    pointItems.forEach((item) => {
+        item.onclick = () => {
+            boxpoint[0].textContent = item.textContent;
+            item.classList.add("dropdown-item-active");
+            if (prevItemPoint && prevItemPoint !== item) {
+                prevItemPoint.classList.remove("dropdown-item-active");
+            }
+            prevItemPoint = item;
+            console.log(prevItemPoint);
+        };
+    });
+}
 
 
 
-
-
-let pointItems = document.querySelectorAll("#dropdown-point .dropdown-item");
-let boxpoint = document.getElementsByClassName("point");
-let prevItemPoint = null;
-let pointFi = document.getElementById("pointFi");
-
-pointFi.classList.add("dropdown-item-active");
-prevItemPoint = pointFi;
-
-pointItems.forEach((item) => {
-    item.onclick = () => {
-        boxpoint[0].textContent = item.textContent;
-        item.classList.add("dropdown-item-active");
-        if (prevItemPoint && prevItemPoint !== item) {
-            prevItemPoint.classList.remove("dropdown-item-active");
-        }
-        prevItemPoint = item;
-        console.log(prevItemPoint);
-    };
-});
-
-
-let quesTick = document.querySelectorAll(".quesTick");
-
-let tickIcon = document.getElementById("tickIconAll");
-let cntTick = 0;
-
-
+const changeTickQues = () =>{
+    let quesTick = document.querySelectorAll(".quesTick");
+    let tickIcon = document.getElementById("tickIconAll");
+    let cntTick = 0;
+    let cntQuesTick = 0
 function checkQuesTick(quesTick, cntTick) {
     if (!cntTick) {
         quesTick.forEach((item) => {
@@ -122,6 +144,11 @@ if (tickIcon) {
         }
     });
 }
+}
+
+
+
+
 
 
 
@@ -170,5 +197,34 @@ const addQues = () =>{
     });
     
 }
-addQues()
 
+
+let quesTypeLocale = "quiz";
+const changeUIBOXANS = () =>{
+    let ansgreen = document.getElementById("green")
+    let ansyellow = document.getElementById("yellow")
+    let btnQuiz = document.getElementById("btn-quiz")
+    let btnTof  = document.getElementById("btn-tof")
+    btnTof.onclick = () =>{
+        ansgreen.classList.add("displayNone")
+        ansyellow.classList.add("displayNone")
+        quesTypeLocale = "tof"
+        localStorage.setItem("quesType", quesTypeLocale);
+    }
+    btnQuiz.onclick = () =>{
+        ansgreen.classList.remove("displayNone")
+        ansyellow.classList.remove("displayNone")    
+        quesTypeLocale = "quiz"
+        localStorage.setItem("quesType", quesTypeLocale);
+    }
+}
+document.addEventListener("DOMContentLoaded", () => {
+    changeUIBOXANS();
+    changeQuesType();
+    
+});
+// changeQuesType();
+addQues();
+changeTime();
+changeTickQues();
+changePoint();

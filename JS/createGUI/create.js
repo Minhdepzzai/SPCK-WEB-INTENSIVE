@@ -29,6 +29,19 @@ checkboxBtn.forEach((item, index) => {
     };
 });
 
+let numberOfSeconds = 15;
+const dropdownItems = document.querySelectorAll("#dropdownbox-time .dropdown-item");
+
+dropdownItems.forEach(item => {
+    item.addEventListener("click", () => {
+        // Extract the number of seconds from the text content
+        const text = item.textContent.trim(); // Remove any leading or trailing spaces
+        numberOfSeconds = parseInt(text.split(" ")[0]); // Extract the numeric part and convert it to an integer
+
+        console.log(numberOfSeconds); // Output the number of seconds to the console
+    });
+});
+
 
 let ansRed = document.getElementById("ans1")
 let ansGreen = document.getElementById("ans4")
@@ -38,38 +51,67 @@ let ansYellow = document.getElementById("ans3")
 
 let pinPriv = '111111';
 saveBtn.onclick = () => {
+    let quesType = localStorage.getItem("quesType")
     console.log(ans)
-    addDoc(collectionRef,{
-        pin:  pinPriv,
-        title:String(titleLesson.value),
-        ques: [
-            {
-                answers: [
-                    {
-                        answer: String(ansRed.value),
-                        isCorrect: ans === 1
-                    },
-                    {
-                        answer: String(ansBlue.value),
-                        isCorrect: ans === 3
-                    },
-                    {
-                        answer:String(ansYellow.value),
-                        isCorrect:ans === 2
-                    },
-                    {
-                        answer:String(ansGreen.value),
-                        isCorrect:ans === 4
-                    }
-                ],
-                name:String(nameQues.value),
-                points:100,
-                time:15
-          }
-        ]
-    })
-    console.log(String(nameQues.value))
+    if(quesType === "quiz"){
+        addDoc(collectionRef,{
+            pin:  pinPriv,
+            title:String(titleLesson.value),
+            ques: [
+                {
+                    answers: [
+                        {
+                            answer: String(ansRed.value),
+                            isCorrect: ans === 1
+                        },
+                        {
+                            answer: String(ansBlue.value),
+                            isCorrect: ans === 3
+                        },
+                        {
+                            answer:String(ansYellow.value),
+                            isCorrect:ans === 2
+                        },
+                        {
+                            answer:String(ansGreen.value),
+                            isCorrect:ans === 4
+                        }
+                    ],
+                    name:String(nameQues.value),
+                    points:100,
+                    time:numberOfSeconds
+              }
+            ]
+        })
+        console.log(String(nameQues.value))    
+    }
+    else{
+        addDoc(collectionRef,{
+            pin:  pinPriv,
+            title:String(titleLesson.value),
+            ques: [
+                {
+                    answers: [
+                        {
+                            answer: String(ansRed.value),
+                            isCorrect: ans === 1
+                        },
+                        {
+                            answer: String(ansBlue.value),
+                            isCorrect: ans === 3
+                        },
+                    ],
+                    name:String(nameQues.value),
+                    points:100,
+                    time:numberOfSeconds
+              }
+            ]
+        })
+        console.log(String(nameQues.value))        
+    }
+    
 }
+
 
 
 
