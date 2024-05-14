@@ -229,3 +229,10 @@ textarea{
 .displayNone{
     display: none;
 }
+#submit-btn{
+    width: 180px;
+}
+.create-right-fourth{
+    padding-top: 20px;
+    padding-right: 20px;
+}

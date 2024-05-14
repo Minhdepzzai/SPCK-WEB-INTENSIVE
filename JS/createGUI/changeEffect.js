@@ -87,12 +87,6 @@ const changePoint = () =>{
 }
 
 
-
-const changeTickQues = () =>{
-    let quesTick = document.querySelectorAll(".quesTick");
-    let tickIcon = document.getElementById("tickIconAll");
-    let cntTick = 0;
-    let cntQuesTick = 0
 function checkQuesTick(quesTick, cntTick) {
     if (!cntTick) {
         quesTick.forEach((item) => {
@@ -108,6 +102,12 @@ function checkQuesTick(quesTick, cntTick) {
         });
     }
 }
+
+const changeTickQues = () =>{
+    let quesTick = document.querySelectorAll(".quesTick");
+    let tickIcon = document.getElementById("tickIconAll");
+    let cntTick = 0;
+    let cntQuesTick = 0
 
 if (tickIcon) {
     tickIcon.addEventListener("mouseover", function() {
@@ -157,10 +157,13 @@ const addQues = () =>{
     let cntQues = 1
     const leftCol = document.getElementsByClassName("scroll-bar")[0]; 
     btnAddQues.onclick = () => {
+        tickIcon = document.getElementById("tickIconAll");
         leftCol.insertAdjacentHTML('beforeend', `<div class="create-left-ques">
         <div class="create-left-ques-left">
         <i class="fas fa-square quesTick"></i>
+        <div class = "create-ques-list">
         <h6 >Question ${cntQues}</h6>
+        </div>
         </div>
         <div class="create-left-ques-right">
         <i class="fa-solid fa-x"></i>
@@ -172,8 +175,10 @@ const addQues = () =>{
             tickIcon.classList.add("fa-square");
             cntTick = false;   
         checkQuesTick(quesTick,0) 
-        console.log(quesTick)
-
+        let quesList = document.querySelectorAll(".create-left-ques")
+        console.log(quesList)
+        // console.log(quesTick)
+        
         quesTick.forEach((item,index) => {
             item.onclick = () =>{
                 if(item.classList.contains("fa-check-square")){
@@ -221,9 +226,25 @@ const changeUIBOXANS = () =>{
 document.addEventListener("DOMContentLoaded", () => {
     changeUIBOXANS();
     changeQuesType();
+    updateQues();
+    
     
 });
+
+
+const updateQues = () =>{
+    console.log(1)
+        quesList = document.querySelectorAll(".create-left-ques")
+        console.log(quesList)
+        quesList.forEach((item,index) =>{
+            item.onclick = () =>{
+                console.log(item)
+            }
+        })
+    
+}
 // changeQuesType();
+
 addQues();
 changeTime();
 changeTickQues();
