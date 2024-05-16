@@ -19,7 +19,7 @@
 //     });    
 // }
 
-
+import { clearFillBlank } from './create.js';
 import { showToast } from './toast.js';
 const changeQuesType = () => {
     let quesT = document.querySelectorAll("#dropdownbox-quesT .dropdown-item");
@@ -66,7 +66,7 @@ const changeTime = () => {
         };
     });
 }
-
+localStorage.setItem("pointType","Standard")
 const changePoint = () =>{
     let pointItems = document.querySelectorAll("#dropdown-point .dropdown-item");
     let boxpoint = document.getElementsByClassName("point");
@@ -74,7 +74,6 @@ const changePoint = () =>{
     let pointFi = document.getElementById("pointFi");
     pointFi.classList.add("dropdown-item-active");
     prevItemPoint = pointFi;
-
     pointItems.forEach((item) => {
         item.onclick = () => {
             boxpoint[0].textContent = item.textContent;
@@ -84,6 +83,8 @@ const changePoint = () =>{
             }
             prevItemPoint = item;
             console.log(prevItemPoint);
+            localStorage.setItem("pointType",item.textContent);
+            console.log(localStorage.getItem("pointType"))
         };
     });
 }
@@ -153,7 +154,7 @@ if (tickIcon) {
 
 
 
-let cntQues = 1
+let cntQues = 2
 if(cntQues){
     localStorage.setItem("checkSave",1)
 }
@@ -172,6 +173,7 @@ const addQues = () =>{
             titleName.focus();
         }
         else if(checkSavee){
+            clearFillBlank();
             localStorage.setItem("checkSave",0)
             checkSavee = parseInt(localStorage.getItem("checkSave"))
             tickIcon = document.getElementById("tickIconAll");
