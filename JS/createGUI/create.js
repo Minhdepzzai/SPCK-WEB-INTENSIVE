@@ -16,15 +16,6 @@ let titleLesson = document.getElementById("title-lesson");
 let nameQues = document.getElementById("quesName");
 let submitBtn = document.querySelector("#submit-btn");
 const collectionRef = collection(db, "questions");
-onSnapshot(collectionRef, (data) => {
-  // console.log(data.docs)
-  const quesLists = [];
-  data.docs.forEach((doc) => {
-    // console.log(doc.data())
-    quesLists.push({ ...doc.data(), id: doc.id });
-    // console.log(doc.data().id)
-  });
-});
 
 let checkboxBtn = document.querySelectorAll(".create-middle-box-ans .checkbox");
 let ans = 1;
@@ -111,6 +102,7 @@ const checkBlankFillTOF = (ans1, ans2, nameQues, titleLesson) => {
     return 0;
   }
 };
+
 let answerList = [];
 const checkSaveFillBlank = () => {
   let saveBtn = document.getElementById("submit-btn");

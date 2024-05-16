@@ -22,6 +22,7 @@ onSnapshot(questionRef, (data) => {
 
   let questListHTML = "";
 
+  // Lặp qua Array queslists vừa lấy về ở firebase và tạo HTML cho câu hỏi
   quesLists?.forEach((item) => {
     questListHTML += `
     <div
@@ -40,5 +41,18 @@ onSnapshot(questionRef, (data) => {
     `;
   });
 
+  // Gán chuỗi HTML và question list
   quesListElement.innerHTML = questListHTML;
+
+  const quesListItem = document.querySelectorAll(".ques-item");
+
+  // Thêm sự kiện click vào từng câu hỏi
+  quesListItem?.forEach(
+    (item, index) =>
+      (item.onclick = (e) => {
+        console.log(quesLists[index]);
+        localStorage.setItem("detailQuestionID", quesLists[index]?.id);
+        window.location.href = "/EditGUI/edit.html";
+      })
+  );
 });
