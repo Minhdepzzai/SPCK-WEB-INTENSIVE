@@ -1,7 +1,4 @@
-
-import {
-  getFirestore,
-} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
@@ -13,13 +10,9 @@ const firebaseConfig = {
   storageBucket: "spck-web-intentsive.appspot.com",
   messagingSenderId: "682430296120",
   appId: "1:682430296120:web:6b793db2b52e5cb8e236cd",
-  measurementId: "G-733ERTEJ9V"
+  measurementId: "G-733ERTEJ9V",
 };
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
-
-
-
-

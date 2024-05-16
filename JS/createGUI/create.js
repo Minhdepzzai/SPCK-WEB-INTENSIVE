@@ -9,7 +9,8 @@ import {
   updateDoc,
   doc,
   onSnapshot,
-  query, where,
+  query,
+  where,
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 let titleLesson = document.getElementById("title-lesson");
 let nameQues = document.getElementById("quesName");
@@ -80,20 +81,18 @@ const checkBlankFill = (ans1, ans2, ans3, ans4, nameQues, titleLesson) => {
   ) {
     return 1;
   } else {
-    showToast("Fill in all blank")
+    showToast("Fill in all blank");
     return 0;
-    
   }
 };
 
-
-const clearFillBlank = () =>{
-    ansRed.value = ""
-    ansBlue.value = ""
-    ansGreen.value = ""
-    ansYellow.value = ""
-    nameQues.value = ""
-}
+const clearFillBlank = () => {
+  ansRed.value = "";
+  ansBlue.value = "";
+  ansGreen.value = "";
+  ansYellow.value = "";
+  nameQues.value = "";
+};
 
 const checkBlankFillTOF = (ans1, ans2, nameQues, titleLesson) => {
   const minValue = 0;
@@ -110,92 +109,96 @@ const checkBlankFillTOF = (ans1, ans2, nameQues, titleLesson) => {
     return 1;
   } else {
     return 0;
-    
   }
 };
 let answerList = [];
-const checkSaveFillBlank = () =>{
+const checkSaveFillBlank = () => {
   let saveBtn = document.getElementById("submit-btn");
   // let checkSave = localStorage.getItem("checkSave");
-  saveBtn.onclick = () =>{
-    console.log(answerList)
-    if(checkBlankFill(ansRed, ansBlue, ansGreen, ansYellow, nameQues, titleLesson)){
-      localStorage.setItem("checkSave",1);
-      answerList.push({  
-                    answers:[
-                      {
-                        answer: String(ansRed.value),
-                        isCorrect: ans === 1,
-                      },
-                      {
-                        answer: String(ansBlue.value),
-                        isCorrect: ans === 3,
-                      },
-                      {
-                        answer: String(ansYellow.value),
-                        isCorrect: ans === 2,
-                      },
-                      {
-                        answer: String(ansGreen.value),
-                        isCorrect: ans === 4,
-                      },
-                    ],
-                    name: String(nameQues.value),
-                    points: String(localStorage.getItem("pointType")),
-                    time: numberOfSeconds,
-                  });
-
-    }
-    else if(checkBlankFillTOF(red,blue,nameQues,titleLesson)){
-      localStorage.setItem("checkSave",1);  
-      answerList.push({  
+  saveBtn.onclick = () => {
+    console.log(answerList);
+    if (
+      checkBlankFill(
+        ansRed,
+        ansBlue,
+        ansGreen,
+        ansYellow,
+        nameQues,
+        titleLesson
+      )
+    ) {
+      localStorage.setItem("checkSave", 1);
+      answerList.push({
         answers: [
           {
-              answer: String(ansRed.value),
-              isCorrect: ans === 1
+            answer: String(ansRed.value),
+            isCorrect: ans === 1,
           },
           {
-              answer: String(ansBlue.value),
-              isCorrect: ans === 3
+            answer: String(ansBlue.value),
+            isCorrect: ans === 3,
           },
-      ],
-        name:String(nameQues.value),
-        points:String(localStorage.getItem("pointType")),
-        time:numberOfSeconds
+          {
+            answer: String(ansYellow.value),
+            isCorrect: ans === 2,
+          },
+          {
+            answer: String(ansGreen.value),
+            isCorrect: ans === 4,
+          },
+        ],
+        name: String(nameQues.value),
+        points: String(localStorage.getItem("pointType")),
+        time: numberOfSeconds,
       });
-      
+    } else if (checkBlankFillTOF(red, blue, nameQues, titleLesson)) {
+      localStorage.setItem("checkSave", 1);
+      answerList.push({
+        answers: [
+          {
+            answer: String(ansRed.value),
+            isCorrect: ans === 1,
+          },
+          {
+            answer: String(ansBlue.value),
+            isCorrect: ans === 3,
+          },
+        ],
+        name: String(nameQues.value),
+        points: String(localStorage.getItem("pointType")),
+        time: numberOfSeconds,
+      });
     }
-  }
-}
+  };
+};
 
-
-const checkQuesCnt = () =>{
-  let btnAddQues  = document.getElementById("addQues")
-  btnAddQues.onclick = () =>{
-      if(localStorage.getItem("cntQues") == 1){
-          prevTypeQues = checkBlankFill()
-      }
-  }
-}
+const checkQuesCnt = () => {
+  let btnAddQues = document.getElementById("addQues");
+  btnAddQues.onclick = () => {
+    if (localStorage.getItem("cntQues") == 1) {
+      prevTypeQues = checkBlankFill();
+    }
+  };
+};
 let docIdType = null;
 const checkFireBase = async (queryValue) => {
   const questionsCollectionRef = collection(db, "questions");
 
-  const titleQuery = query(questionsCollectionRef, where("title", "==", queryValue));
+  const titleQuery = query(
+    questionsCollectionRef,
+    where("title", "==", queryValue.trim())
+  );
 
   try {
     const matchingDocsSnapshot = await getDocs(titleQuery);
     matchingDocsSnapshot.forEach((doc) => {
-        const data = doc.data();
-        // console.log("Document ID:", doc.id, "Title:", data.title);
-        docIdType = doc.id;
+      const data = doc.data();
+      // console.log("Document ID:", doc.id, "Title:", data.title);
+      docIdType = doc.id;
     });
-    console.log(docIdType) 
-
-  } catch (error) {
-  }
-}
-
+    console.log(docIdType);
+  } catch (error) {}
+};
 
 // const addDocQues = () =>{
 //   let saveBtn = document.getElementById("saveBtn")
@@ -214,12 +217,11 @@ const checkFireBase = async (queryValue) => {
 //         pin:  pinPriv,
 //                       title:String(titleLesson.value),
 //                       ques:
-//                          answerList  
+//                          answerList
 //       })
 //     }
 //   }
 // }
-
 
 const addDocQues = () => {
   let saveBtn = document.getElementById("saveBtn");
@@ -229,36 +231,35 @@ const addDocQues = () => {
     const data = {
       pin: pinPriv,
       title: String(titleLesson.value),
-      ques: answerList
+      ques: answerList,
     };
 
     if (docIdType === null) {
-      addDoc(collectionRef,{
-                         pin:  pinPriv,
-                      title:String(titleLesson.value),
-                     ques:
-                         answerList
-              })
+      addDoc(collectionRef, {
+        pin: pinPriv,
+        title: String(titleLesson.value),
+        ques: answerList,
+      });
     } else {
-      addDoc(doc(collectionRef, docIdType),{
-        pin:  pinPriv,
-        title:String(titleLesson.value),
-        ques:
-            answerList
-})
-
+      const detailDocRef = doc(db, "questions", docIdType);
+      console.log(detailDocRef);
+      // addDoc(doc(collectionRef, docIdType), {
+      //   pin: pinPriv,
+      //   title: String(titleLesson.value),
+      //   ques: answerList,
+      // });
     }
   };
 };
 
+const test = () => {
+  let saveBtn = document.getElementById("saveBtn");
+  saveBtn.onclick = () => {
+    checkFireBase("123");
+  };
+};
 
-
-// const test = () =>{
-//   let saveBtn = document.getElementById("saveBtn")
-//   saveBtn.onclick = () =>{
-//     checkFireBase("123")
-//   }
-// }
+test();
 
 // submitBtn.onclick = () => {
 //   currentStatus++;
@@ -325,7 +326,6 @@ const addDocQues = () => {
 //   }
 // };
 
-
 // let saveBtn = document.getElementById("saveBtn")
 // saveBtn.onclick = () => {
 //     addDoc(collectionRef,{
@@ -334,14 +334,13 @@ const addDocQues = () => {
 //                 ques:
 //                     answerList
 //             })
-   
+
 // };
 
 document.addEventListener("DOMContentLoaded", () => {
   checkSaveFillBlank();
   // addDocQues();
-  
 });
 // test();
 addDocQues();
-export{clearFillBlank}
+export { clearFillBlank };
