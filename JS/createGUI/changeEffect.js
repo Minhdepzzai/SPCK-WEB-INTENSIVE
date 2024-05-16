@@ -19,6 +19,8 @@
 //     });    
 // }
 
+
+import { showToast } from './toast.js';
 const changeQuesType = () => {
     let quesT = document.querySelectorAll("#dropdownbox-quesT .dropdown-item");
     let boxquesT = document.querySelector(".box-quesType"); 
@@ -151,46 +153,63 @@ if (tickIcon) {
 
 
 
+let cntQues = 1
+if(cntQues){
+    localStorage.setItem("checkSave",1)
+}
 
+let checkSavee = parseInt(localStorage.getItem("checkSave"))
 const addQues = () =>{
     const btnAddQues = document.getElementById("addQues")
-    let cntQues = 1
     const leftCol = document.getElementsByClassName("scroll-bar")[0]; 
+    let tickIcon = document.getElementById("tickIconAll")
     btnAddQues.onclick = () => {
-        tickIcon = document.getElementById("tickIconAll");
-        leftCol.insertAdjacentHTML('beforeend', `<div class="create-left-ques">
-        <div class="create-left-ques-left">
-        <i class="fas fa-square quesTick"></i>
-        <div class = "create-ques-list">
-        <h6 >Question ${cntQues}</h6>
-        </div>
-        </div>
-        <div class="create-left-ques-right">
-        <i class="fa-solid fa-x"></i>
-        </div>
-        </div>`);
-        cntQues++;
-        quesTick = document.querySelectorAll(".quesTick");
-        tickIcon.classList.remove("fa-check-square");
-            tickIcon.classList.add("fa-square");
-            cntTick = false;   
-        checkQuesTick(quesTick,0) 
-        let quesList = document.querySelectorAll(".create-left-ques")
-        console.log(quesList)
-        // console.log(quesTick)
         
-        quesTick.forEach((item,index) => {
-            item.onclick = () =>{
-                if(item.classList.contains("fa-check-square")){
-                    item.classList.remove("fa-check-square")
-                    item.classList.add("fa-square");
-                }  
-                else{
-                    item.classList.remove("fa-square");
-                    item.classList.add("fa-check-square")
+        checkSavee = parseInt(localStorage.getItem("checkSave"))
+        let titleName = document.getElementById("title-lesson")
+        if(titleName.value.trim().length == 0){
+            showToast('Fill in title for me');
+            titleName.focus();
+        }
+        else if(checkSavee){
+            localStorage.setItem("checkSave",0)
+            checkSavee = parseInt(localStorage.getItem("checkSave"))
+            tickIcon = document.getElementById("tickIconAll");
+            leftCol.insertAdjacentHTML('beforeend', `<div class="create-left-ques">
+            <div class="create-left-ques-left">
+            <i class="fas fa-square quesTick"></i>
+            <div class = "create-ques-list">
+            <h6 >Question ${cntQues}</h6>
+            </div>
+            </div>
+            <div class="create-left-ques-right">
+            <i class="fa-solid fa-x"></i>
+            </div>
+            </div>`);
+            cntQues++;
+            quesTick = document.querySelectorAll(".quesTick");
+            tickIcon.classList.remove("fa-check-square");
+                tickIcon.classList.add("fa-square");
+                cntTick = false;   
+            checkQuesTick(quesTick,0) 
+            let quesList = document.querySelectorAll(".create-left-ques")
+            console.log(quesList)
+            // console.log(quesTick)
+            
+            quesTick.forEach((item,index) => {
+                item.onclick = () =>{
+                    if(item.classList.contains("fa-check-square")){
+                        item.classList.remove("fa-check-square")
+                        item.classList.add("fa-square");
+                    }  
+                    else{
+                        item.classList.remove("fa-square");
+                        item.classList.add("fa-check-square")
+                    }
                 }
-            }
-        })
+            })
+        }
+        
     }
 
     const createLeftQuesItems = document.querySelectorAll('.create-left-ques-item');
@@ -202,6 +221,9 @@ const addQues = () =>{
     });
     
 }
+
+
+
 
 
 let quesTypeLocale = "quiz";
@@ -226,7 +248,9 @@ const changeUIBOXANS = () =>{
 document.addEventListener("DOMContentLoaded", () => {
     changeUIBOXANS();
     changeQuesType();
-    updateQues();
+    addQues();
+    localStorage.setItem("cntQues",cntQues);
+    
     
     
 });
@@ -245,7 +269,7 @@ const updateQues = () =>{
 }
 // changeQuesType();
 
-addQues();
+// addQues();
 changeTime();
 changeTickQues();
 changePoint();

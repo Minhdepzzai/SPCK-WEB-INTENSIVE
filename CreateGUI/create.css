@@ -72,7 +72,7 @@ body {
 }
 .fa-close:hover{
     background-color: #f8f9fa;
-    color: #555
+    color: #555;
 }
 .create-left{
     background-color: white;
@@ -144,7 +144,7 @@ body {
     align-items: center;
 }
 .create-left-ques:hover{
-    background-color: #f8f9fa;
+    background-color: #a3a3a391 ;
 }
 .create-middle-box-ans{
     display: flex;

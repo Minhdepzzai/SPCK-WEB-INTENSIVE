@@ -81,7 +81,28 @@ const checkBlankFill = (ans1, ans2, ans3, ans4, nameQues, titleLesson) => {
   }
 };
 
+
+
+const checkSaveFillBlank = () =>{
+  let saveBtn = document.getElementById("submit-btn");
+  // let checkSave = localStorage.getItem("checkSave");
+  saveBtn.onclick = () =>{
+    if(checkBlankFill(ansRed, ansBlue, ansGreen, ansYellow, nameQues, titleLesson)){
+      localStorage.setItem("checkSave",1);
+    }
+  }
+}
+
 let answerList = [];
+// const checkQuesCnt = () =>{
+//   let btnAddQues  = document.getElementById("addQues")
+//   btnAddQues.onclick = () =>{
+//       if(localStorage.getItem("cntQues") == 1){
+//           prevTypeQues = checkBlankFill()
+//       }
+//   }
+// }
+
 submitBtn.onclick = () => {
   currentStatus++;
   updateLocalStorage();
@@ -145,62 +166,6 @@ submitBtn.onclick = () => {
   } else {
     console.log(0);
   }
-  // if(quesType === "quiz"){
-  //     addDoc(collectionRef,{
-  //         pin:  pinPriv,
-  //         title:String(titleLesson.value),
-  //         ques: [
-  //             {
-  //                 answers: [
-  //                     {
-  //                         answer: String(ansRed.value),
-  //                         isCorrect: ans === 1
-  //                     },
-  //                     {
-  //                         answer: String(ansBlue.value),
-  //                         isCorrect: ans === 3
-  //                     },
-  //                     {
-  //                         answer:String(ansYellow.value),
-  //                         isCorrect:ans === 2
-  //                     },
-  //                     {
-  //                         answer:String(ansGreen.value),
-  //                         isCorrect:ans === 4
-  //                     }
-  //                 ],
-  //                 name:String(nameQues.value),
-  //                 points:100,
-  //                 time:numberOfSeconds
-  //           }
-  //         ]
-  //     })
-  //     console.log(String(nameQues.value))
-  // }
-  // else{
-  //     addDoc(collectionRef,{
-  //         pin:  pinPriv,
-  //         title:String(titleLesson.value),
-  //         ques: [
-  //             {
-  //                 answers: [
-  //                     {
-  //                         answer: String(ansRed.value),
-  //                         isCorrect: ans === 1
-  //                     },
-  //                     {
-  //                         answer: String(ansBlue.value),
-  //                         isCorrect: ans === 3
-  //                     },
-  //                 ],
-  //                 name:String(nameQues.value),
-  //                 points:100,
-  //                 time:numberOfSeconds
-  //           }
-  //         ]
-  //     })
-  //     console.log(String(nameQues.value))
-  // }
 };
 
 
@@ -215,3 +180,6 @@ saveBtn.onclick = () => {
    
 };
 
+document.addEventListener("DOMContentLoaded", () => {
+  checkSaveFillBlank();
+});
