@@ -58,6 +58,22 @@ quesItemNameElement.oninput = (e) => {
   dataDetail.ques[currentQuestionIndex].name = e.target.value;
 };
 
+ansRedElement.oninput = (e) => {
+  dataDetail.ques[currentQuestionIndex].answer[0].answer = e.target.value;
+};
+
+ansYellowElement.oninput = (e) => {
+  dataDetail.ques[currentQuestionIndex].answer[1].answer = e.target.value;
+};
+
+ansGreenElement.oninput = (e) => {
+  dataDetail.ques[currentQuestionIndex].answer[3].answer = e.target.value;
+};
+
+ansBlueElement.oninput = (e) => {
+  dataDetail.ques[currentQuestionIndex].answer[2].answer = e.target.value;
+};
+
 // Sự kiện click khi bấm vào nút add question
 addQuesBtnElement.onclick = () => {
   // đẩy dữ liệu khởi tạo vào mảng ques

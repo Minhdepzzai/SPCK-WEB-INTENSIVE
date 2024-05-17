@@ -1,3 +1,4 @@
+import { showToast } from "../../JS/createGUI/toast.js";
 import { auth } from "../../JS/firebase.js";
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 
@@ -17,19 +18,19 @@ document.getElementById("btnSubmit").addEventListener("click", async function (e
     passwordInput.value.trim().length == 0 ||
     passwordConfirmInput.value.trim().length == 0
   ) {
-    alert("Can not empty!");
+    showToast("Can not empty!");
   } else if (passwordInput.value.trim().length < 8) {
-    alert("Password must have a minimum length of 8 characters.");
+    showToast("Password must have a minimum length of 8 characters.");
   } else if (!passwordInput.value.trim().match(chuThuong)) {
-    alert("Password must have at least one lowercase character.");
+    showToast("Password must have at least one lowercase character.");
   } else if (!passwordInput.value.trim().match(chuHoa)) {
-    alert("Password must have at least one capital letter.");
+    showToast("Password must have at least one capital letter.");
   } else if (!passwordInput.value.trim().match(chuSo)) {
-    alert("Password must have at least one number.");
+    showToast("Password must have at least one number.");
   } else if (!emailInput.value.trim().match(checkEmail)) {
-    alert("Inappropriate email.");
+    showToast("Inappropriate email.");
   } else if (passwordInput.value.trim() != passwordConfirmInput.value.trim()) {
-    alert("password does not match");
+    showToast("password does not match");
   } else {
     try {
       const userCreate = await createUserWithEmailAndPassword(
@@ -42,10 +43,10 @@ document.getElementById("btnSubmit").addEventListener("click", async function (e
       window.location.href = "/AuthGUI/Login/login.html"
 
       // await userCreate.user.sendEmailVerification();
-      // alert("Đã gửi Email xác thực.Vui lòng vào email của bạn để xác nhận")
+      // showToast("Đã gửi Email xác thực.Vui lòng vào email của bạn để xác nhận")
 
     } catch (err) {
-      alert(err.message);
+      showToast(err.message);
     } 
   }
 });

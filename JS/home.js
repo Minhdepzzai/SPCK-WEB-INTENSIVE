@@ -52,7 +52,7 @@ onSnapshot(questionRef, (data) => {
       (item.onclick = (e) => {
         console.log(quesLists[index]);
         localStorage.setItem("detailQuestionID", quesLists[index]?.id);
-        window.location.href = "/EditGUI/edit.html";
+        window.location.href = "/SPCK-WEB-INTENSIVE/EditGUI/edit.html";
       })
   );
 });
