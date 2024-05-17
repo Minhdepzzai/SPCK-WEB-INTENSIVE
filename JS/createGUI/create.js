@@ -37,7 +37,6 @@ dropdownItems.forEach((item) => {
   item.addEventListener("click", () => {
     const text = item.textContent.trim();
     numberOfSeconds = parseInt(text.split(" ")[0]);
-    console.log(numberOfSeconds);
   });
 });
 
@@ -56,13 +55,7 @@ let pinPriv = "111111";
 const checkBlankFill = (ans1, ans2, ans3, ans4, nameQues, titleLesson) => {
   const minValue = 0;
   const maxValue = 200;
-  console.log(
-    ans1.value.trim().length > minValue,
-    ans2.value.trim().length > minValue,
-    ans3.value.trim().length > minValue,
-    ans4.value.trim().length > minValue,
-    titleLesson.value.trim().length > minValue
-  );
+
   if (
     ans1.value.trim().length > minValue &&
     ans2.value.trim().length > minValue &&
@@ -144,7 +137,6 @@ const checkSaveFillBlank = () => {
         points: String(localStorage.getItem("pointType")),
         time: numberOfSeconds,
       };
-      console.log(answerList);
 
       showSuccessToast("Create question sucessfully");
     } else if (checkBlankFillTOF(ansRed, ansBlue, nameQues, titleLesson)) {
@@ -191,7 +183,6 @@ const checkFireBase = async (queryValue) => {
 
 const renderQuestion = () => {
   const data = answerList[currentQuestionIndex];
-  console.log("data", data);
   nameQues.value = data.name;
   ansRed.value = data.answers[0].answer;
   ansYellow.value = data.answers[1].answer;

@@ -33,7 +33,6 @@ const changeQuesType = () => {
       prevItemQuesT.classList.remove("dropdown-item-active");
     }
     prevItemQuesT = item;
-    console.log(prevItemQuesT.textContent);
   };
   quesT.forEach((item) => {
     item.addEventListener("click", () => {
@@ -59,7 +58,6 @@ const changeTime = () => {
         prevItemTime.classList.remove("dropdown-item-active");
       }
       prevItemTime = item;
-      console.log(prevItemTime);
     };
   });
 };
@@ -79,9 +77,7 @@ const changePoint = () => {
         prevItemPoint.classList.remove("dropdown-item-active");
       }
       prevItemPoint = item;
-      console.log(prevItemPoint);
       localStorage.setItem("pointType", item.textContent);
-      console.log(localStorage.getItem("pointType"));
     };
   });
 };

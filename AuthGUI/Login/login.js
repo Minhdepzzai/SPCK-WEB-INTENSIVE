@@ -20,7 +20,6 @@ submitBtn.onclick = async (e) => {
         emailInput.value,
         passwordInput.value
       );
-      console.log(auth.currentUser.email);
       localStorage.setItem("currentUser", auth.currentUser.email);
       showSuccessToast("Login successful");
 

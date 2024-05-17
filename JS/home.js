@@ -5,7 +5,7 @@ import {
   onSnapshot,
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
-import { showSuccessToast } from "./createGUI/toast.js";
+import { showErrorToast, showSuccessToast } from "./createGUI/toast.js";
 
 import { db, auth } from "./firebase.js";
 
@@ -21,8 +21,6 @@ onSnapshot(questionRef, (data) => {
     quesLists.push({ ...doc.data(), id: doc.id });
     // console.log(doc.data().id)
   });
-
-  console.log(quesLists);
 
   let questListHTML = "";
 
@@ -57,10 +55,18 @@ onSnapshot(questionRef, (data) => {
   deleteBtnList?.forEach(
     (item, index) =>
       (item.onclick = async (e) => {
-        const docRef = doc(db, "questions", quesLists[index].id);
-        await deleteDoc(docRef);
-        showSuccessToast("Delete sucessfully");
-        console.log(quesLists[index]);
+        const currentUser =
+          localStorage.getItem("currentUser") === "null"
+            ? null
+            : localStorage.getItem("currentUser");
+
+        if (currentUser) {
+          const docRef = doc(db, "questions", quesLists[index].id);
+          await deleteDoc(docRef);
+          showSuccessToast("Delete sucessfully");
+        } else {
+          showErrorToast("Login permission!");
+        }
       })
   );
 
@@ -68,8 +74,17 @@ onSnapshot(questionRef, (data) => {
   editBtnList?.forEach(
     (item, index) =>
       (item.onclick = (e) => {
-        localStorage.setItem("detailQuestionID", quesLists[index]?.id);
-        window.location.href = "/EditGUI/edit.html";
+        const currentUser =
+          localStorage.getItem("currentUser") === "null"
+            ? null
+            : localStorage.getItem("currentUser");
+
+        if (currentUser) {
+          localStorage.setItem("detailQuestionID", quesLists[index]?.id);
+          window.location.href = "/EditGUI/edit.html";
+        } else {
+          showErrorToast("Login permission!");
+        }
       })
   );
 });
