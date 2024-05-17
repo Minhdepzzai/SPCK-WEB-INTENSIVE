@@ -1,4 +1,4 @@
-function showToast(text) {
+function showSuccessToast(text) {
   Toastify({
     text: text,
     duration: 3000,
@@ -9,10 +9,27 @@ function showToast(text) {
     position: "center",
     stopOnFocus: true,
     style: {
-      background: "linear-gradient(to right, #00b09b, #96c93d)",
+      background: "#34c724",
     },
     onClick: function () {}, // Callback after click
   }).showToast();
 }
 
-export { showToast };
+function showErrorToast(text) {
+  Toastify({
+    text: text,
+    duration: 3000,
+    destination: "https://github.com/apvarun/toastify-js",
+    newWindow: true,
+    close: true,
+    gravity: "top",
+    position: "center",
+    stopOnFocus: true,
+    style: {
+      background: "#ed4337",
+    },
+    onClick: function () {}, // Callback after click
+  }).showToast();
+}
+
+export { showSuccessToast, showErrorToast };

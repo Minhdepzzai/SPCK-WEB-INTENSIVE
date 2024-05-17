@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Edit page</title>
     <link
       rel="stylesheet"
       type="text/css"
@@ -26,51 +26,8 @@
   </head>
 
   <body>
-    <div class="nav">
-      <div class="left">
-        <img
-          class="nav-img"
-          src="/SPCK-WEB-INTENSIVE/Image/chatbot.png"
-          alt=""
-        />
-      </div>
-      <div class="middle-box">
-        <div class="middle">
-          <div class="nav-item">
-            <div class="nav-box">
-              <a href="">
-                <h2>Home</h2>
-              </a>
-            </div>
-            <div class="nav-box">
-              <a href="">
-                <h2>Create</h2>
-              </a>
-            </div>
-            <div class="nav-box">
-              <a href="">
-                <h2>Play</h2>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="nav" id="myNavbar"></div>
 
-      <div class="right">
-        <div class="nav-item">
-          <div class="nav-box">
-            <a href="/SPCK-WEB-INTENSIVE/AuthGUI/Register/register.html">
-              <h2>Register</h2>
-            </a>
-          </div>
-          <div class="nav-box">
-            <a href="/SPCK-WEB-INTENSIVE/AuthGUI/Login/login.html">
-              <h2>Login</h2>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="create-left-title">
       <div class="input-group mb-3 tilte-less">
         <input
@@ -246,17 +203,19 @@
             </div>
           </div>
           <div class="create-right-fourth">
-            <button
+            <!-- <button
               type="button"
               class="btn btn-primary btn-sm"
               id="submit-btn"
             >
               Small button
-            </button>
+            </button> -->
           </div>
         </div>
       </div>
     </div>
+
+    <script src="../JS/renderNavbar.js"></script>
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/toastify-js"
@@ -273,7 +232,6 @@
     ></script>
     <script type="module" src="../JS/createGUI/toast.js"></script>
     <script type="module" src="../JS/firebase.js"></script>
-    <script src="../JS/createGUI/Ques.js"></script>
     <script type="module" src="../JS/edit.js"></script>
     <script type="module" src="../JS/createGUI/changeEffect.js"></script>
   </body>

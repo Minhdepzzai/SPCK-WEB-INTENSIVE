@@ -1,9 +1,13 @@
 import {
+  deleteDoc,
+  doc,
   collection,
   onSnapshot,
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
-import { db } from "./firebase.js";
+import { showSuccessToast } from "./createGUI/toast.js";
+
+import { db, auth } from "./firebase.js";
 
 const questionRef = collection(db, "questions");
 
@@ -37,6 +41,8 @@ onSnapshot(questionRef, (data) => {
         }</span>
       </div>
       <div class="ques-quantity">${item?.ques?.length} câu hỏi</div>
+      <div class="btn btn-info mt-3 edit-btn" style="width: 100%">Chỉnh sửa</div>
+      <div class="btn btn-danger mt-3 delete-btn" style="width: 100%">Xóa</div>
     </div>
     `;
   });
@@ -44,15 +50,26 @@ onSnapshot(questionRef, (data) => {
   // Gán chuỗi HTML và question list
   quesListElement.innerHTML = questListHTML;
 
-  const quesListItem = document.querySelectorAll(".ques-item");
+  const editBtnList = document.querySelectorAll(".edit-btn");
+  const deleteBtnList = document.querySelectorAll(".delete-btn");
 
-  // Thêm sự kiện click vào từng câu hỏi
-  quesListItem?.forEach(
+  // Thêm sự kiện click vào các nút xóa
+  deleteBtnList?.forEach(
+    (item, index) =>
+      (item.onclick = async (e) => {
+        const docRef = doc(db, "questions", quesLists[index].id);
+        await deleteDoc(docRef);
+        showSuccessToast("Delete sucessfully");
+        console.log(quesLists[index]);
+      })
+  );
+
+  // Thêm sự kiện click vào khi các nút chỉnh sửa
+  editBtnList?.forEach(
     (item, index) =>
       (item.onclick = (e) => {
-        console.log(quesLists[index]);
         localStorage.setItem("detailQuestionID", quesLists[index]?.id);
-        window.location.href = "/SPCK-WEB-INTENSIVE/EditGUI/edit.html";
+        window.location.href = "/EditGUI/edit.html";
       })
   );
 });
